@@ -1,0 +1,17 @@
+{
+  "name": "hexo-ipfs",
+  "version": "1.0.0",
+  "description": "A web3 plugin for Hexo to publish your blog posts to Interplanetary File System (IPFS)A",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["hexo", "plugin", "ipfs"],
+  "author": "Justin Lee",
+  "license": "ISC",
+  "dependencies": {
+    "@helia/unixfs": "^3.0.6",
+    "helia": "^4.2.4",
+    "hexo": "^7.3.0"
+  }
+}
