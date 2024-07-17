@@ -1,8 +1,10 @@
 # hexo-ipfs-plugin
 
-A web3 plugin for Hexo to publish your blog posts to Interplanetary File System (IPFS), and manages version history
+A web3 plugin for Hexo to publish your blog posts to Interplanetary File System (IPFS), and manages version history. 
 
 ## Installation
+
+View on [npm](https://www.npmjs.com/package/hexo-ipfs)
 
 ```bash
 npm install hexo-ipfs
