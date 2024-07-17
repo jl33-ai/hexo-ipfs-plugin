@@ -1,7 +1,8 @@
 const ipfsUploader = require('./lib/ipfs-uploader');
+const config = require('./lib/config');
+const { streamToString } = require('./lib/helpers');
 
-// const config = require('./config');
-// const pluginConfig = config(hexo);
+const pluginConfig = config(hexo);
 
 hexo.extend.filter.register('after_generate', async function() {
     const { route } = this;
@@ -50,11 +51,3 @@ hexo.extend.filter.register('after_generate', async function() {
 // });
 
 
-function streamToString(stream) {
-    return new Promise((resolve, reject) => {
-        let content = '';
-        stream.on('data', (chunk) => content += chunk);
-        stream.on('end', () => resolve(content));
-        stream.on('error', reject);
-    });
-}
