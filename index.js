@@ -50,7 +50,6 @@ hexo.extend.filter.register('after_generate', async function () {
     }
 });
 
-
 hexo.extend.helper.register('getLatestIpfsCID', function (page) {
     if (page.cids && page.cids.length > 0) {
         return page.cids[0];
