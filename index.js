@@ -1,6 +1,6 @@
 const ipfsUploader = require('./lib/ipfs-uploader');
 const config = require('./lib/config');
-const {streamToString} = require('./lib/helpers');
+const {streamToString, getRouteContent} = require('./lib/helpers');
 const fs = require('fs');
 
 const pluginConfig = config(hexo);
@@ -15,7 +15,6 @@ hexo.extend.filter.register('after_generate', async function () {
         for (const post of posts.data) {
             if (post && post.ipfs === true) {
                 const postPath = post.path;
-                hexo.log.info(`Attempting to upload ${postPath}`)
                 const htmlPath = postPath.replace(/\.md$/, '.html');
                 const htmlContent = await getRouteContent(route, htmlPath);
 
@@ -51,19 +50,6 @@ hexo.extend.filter.register('after_generate', async function () {
     }
 });
 
-async function getRouteContent(route, path) {
-    return new Promise((resolve, reject) => {
-        const stream = route.get(path);
-        if (!stream) {
-            resolve(null);
-            return;
-        }
-        let content = '';
-        stream.on('data', chunk => (content += chunk));
-        stream.on('end', () => resolve(content));
-        stream.on('error', reject);
-    });
-}
 
 hexo.extend.helper.register('getLatestIpfsCID', function (page) {
     if (page.cids && page.cids.length > 0) {
